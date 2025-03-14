@@ -99,6 +99,7 @@ public:
 
     void printGraph() override
     {
+        cout << "Adjacency Matrix:" << endl;
         cout << "  ";
         for (const auto &label : indexToLabel)
         {
