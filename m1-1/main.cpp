@@ -16,7 +16,7 @@ protected:
 public:
     Graph(bool directed, bool weighted) : directed(directed), weighted(weighted) {}
     virtual bool addVertex(string label) = 0;
-    virtual bool addEdge(int source, int destination, int weight = 1) = 0;
+    virtual bool addEdge(int source, int destination, float weight = 1.0) = 0;
     virtual bool removeEdge(int source, int destination) = 0;
     virtual bool edgeExists(int source, int destination) = 0;
     virtual float edgeWeight(int source, int destination) = 0;
@@ -36,7 +36,7 @@ public:
 class AdjacencyMatrixGraph : public Graph
 {
 private:
-    vector<vector<int>> matrix;
+    vector<vector<float>> matrix;
 
 public:
     AdjacencyMatrixGraph(bool directed, bool weighted) : Graph(directed, weighted) {}
@@ -52,11 +52,11 @@ public:
         {
             row.push_back(0);
         }
-        matrix.push_back(vector<int>(index + 1, 0));
+        matrix.push_back(vector<float>(index + 1, 0));
         return true;
     }
 
-    bool addEdge(int source, int destination, int weight = 1) override
+    bool addEdge(int source, int destination, float weight = 1.0) override
     {
         if (source >= matrix.size() || destination >= matrix.size())
             return false;
@@ -109,7 +109,7 @@ public:
         for (size_t i = 0; i < matrix.size(); ++i)
         {
             cout << indexToLabel[i] << " ";
-            for (int val : matrix[i])
+            for (float val : matrix[i])
             {
                 cout << val << " ";
             }
@@ -121,7 +121,7 @@ public:
 struct Edge
 {
     int destination;
-    int weight;
+    float weight;
 };
 
 class AdjacencyListGraph : public Graph
@@ -143,7 +143,7 @@ public:
         return true;
     }
 
-    bool addEdge(int source, int destination, int weight = 1) override
+    bool addEdge(int source, int destination, float weight = 1) override
     {
         if (source >= adjacencyList.size() || destination >= adjacencyList.size())
             return false;
@@ -218,8 +218,8 @@ int main()
     matrixGraph.addVertex("A");
     matrixGraph.addVertex("B");
     matrixGraph.addVertex("C");
-    matrixGraph.addEdge(0, 1, 5);
-    matrixGraph.addEdge(1, 2, 3);
+    matrixGraph.addEdge(0, 1, 5.5);
+    matrixGraph.addEdge(1, 2, -3);
     matrixGraph.addEdge(2, 0, 2);
     matrixGraph.printGraph();
 
@@ -232,14 +232,17 @@ int main()
     listGraph.addVertex("A");
     listGraph.addVertex("B");
     listGraph.addVertex("C");
-    listGraph.addEdge(0, 1, 5);
-    listGraph.addEdge(1, 2, 3);
+    listGraph.addEdge(0, 1, 5.5);
+    listGraph.addEdge(1, 2, -3);
     listGraph.addEdge(2, 0, 2);
     listGraph.printGraph();
 
     // Remove edge from listGraph
     listGraph.removeEdge(0, 1);
     listGraph.removeEdge(0, 2);
+
+    // Remove Vertex from listGraph
+
     listGraph.printGraph();
 
     return 0;
