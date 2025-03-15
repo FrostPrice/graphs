@@ -298,141 +298,100 @@ public:
     }
 };
 
-int main()
+void example_code_graphs_weighted_undirected()
 {
-    // cout << "=== Adjacency Matrix Graph (Non-Directed) ===" << endl;
-    // AdjacencyMatrixGraph matrixGraph(false, true);
-    // matrixGraph.addVertex("A");
-    // matrixGraph.addVertex("B");
-    // matrixGraph.addVertex("C");
-    // matrixGraph.addEdge(0, 1, 5.5);
-    // matrixGraph.addEdge(1, 2, -3);
-    // matrixGraph.addEdge(2, 0, 2);
-    // matrixGraph.printGraph();
+    cout << "=== Adjacency Matrix Graph (Non-Directed) ===" << endl;
+    AdjacencyMatrixGraph matrixGraph(false, true);
+    matrixGraph.addVertex("A");
+    matrixGraph.addVertex("B");
+    matrixGraph.addVertex("C");
+    matrixGraph.addEdge(0, 1, 5.5);
+    matrixGraph.addEdge(1, 2, -3);
+    matrixGraph.addEdge(2, 0, 2);
+    matrixGraph.printGraph();
 
-    // // Remove edge from matrixGraph
-    // matrixGraph.removeEdge(0, 1);
-    // matrixGraph.removeEdge(0, 2);
+    // Remove edge from matrixGraph
+    matrixGraph.removeEdge(0, 1);
+    matrixGraph.removeEdge(0, 2);
 
-    // // Remove Vertex from matrixGraph
-    // matrixGraph.removeVertex("A");
+    // Remove Vertex from matrixGraph
+    matrixGraph.removeVertex("A");
 
-    // matrixGraph.printGraph();
+    matrixGraph.printGraph();
 
-    // cout << "\n=== Adjacency List Graph (Non-Directed) ===" << endl;
-    // AdjacencyListGraph listGraph(false, true);
-    // listGraph.addVertex("A");
-    // listGraph.addVertex("B");
-    // listGraph.addVertex("C");
-    // listGraph.addEdge(0, 1, 5.5);
-    // listGraph.addEdge(1, 2, -3);
-    // listGraph.addEdge(2, 0, 2);
-    // listGraph.printGraph();
+    cout << "\n=== Adjacency List Graph (Non-Directed) ===" << endl;
+    AdjacencyListGraph listGraph(false, true);
+    listGraph.addVertex("A");
+    listGraph.addVertex("B");
+    listGraph.addVertex("C");
+    listGraph.addEdge(0, 1, 5.5);
+    listGraph.addEdge(1, 2, -3);
+    listGraph.addEdge(2, 0, 2);
+    listGraph.printGraph();
 
-    // // Remove edge from listGraph
-    // listGraph.removeEdge(0, 1);
-    // listGraph.removeEdge(0, 2);
+    // Remove edge from listGraph
+    listGraph.removeEdge(0, 1);
+    listGraph.removeEdge(0, 2);
 
-    // // Remove Vertex from listGraph
-    // listGraph.removeVertex("A");
+    // Remove Vertex from listGraph
+    listGraph.removeVertex("A");
 
-    // listGraph.printGraph();
+    listGraph.printGraph();
+};
 
-    // cout << "=== Adjacency Matrix Graph (Directed) ===" << endl;
-    // AdjacencyMatrixGraph matrixGraph(true, true); // Directed, Weighted Graph
+void example_code_graphs_weighted_directed()
+{
+    cout << "=== Adjacency Matrix Graph (Directed) ===" << endl;
+    AdjacencyMatrixGraph matrixGraph(true, true); // Directed, Weighted Graph
 
-    // // Add vertices
-    // matrixGraph.addVertex("A");
-    // matrixGraph.addVertex("B");
-    // matrixGraph.addVertex("C");
-    // matrixGraph.addVertex("D");
+    // Add vertices
+    matrixGraph.addVertex("A");
+    matrixGraph.addVertex("B");
+    matrixGraph.addVertex("C");
+    matrixGraph.addVertex("D");
 
-    // // Add directed edges
-    // matrixGraph.addEdge(0, 1, 5.5);
-    // matrixGraph.addEdge(1, 2, -3);
-    // matrixGraph.addEdge(2, 3, 2);
-    // matrixGraph.addEdge(3, 0, 4.1);
+    // Add directed edges
+    matrixGraph.addEdge(0, 1, 5.5);
+    matrixGraph.addEdge(1, 2, -3);
+    matrixGraph.addEdge(2, 3, 2);
+    matrixGraph.addEdge(3, 0, 4.1);
 
-    // cout << "Before removing vertex 'B':" << endl;
-    // matrixGraph.printGraph();
+    cout << "Before removing vertex 'B':" << endl;
+    matrixGraph.printGraph();
 
-    // // Remove a vertex
-    // matrixGraph.removeVertex("B");
+    // Remove a vertex
+    matrixGraph.removeVertex("B");
 
-    // cout << "After removing vertex 'B':" << endl;
-    // matrixGraph.printGraph();
+    cout << "After removing vertex 'B':" << endl;
+    matrixGraph.printGraph();
 
-    // cout << "\n=== Adjacency List Graph (Directed) ===" << endl;
-    // AdjacencyListGraph listGraph(true, true); // Directed, Weighted Graph
+    cout << "\n=== Adjacency List Graph (Directed) ===" << endl;
+    AdjacencyListGraph listGraph(true, true); // Directed, Weighted Graph
 
-    // // Add vertices
-    // listGraph.addVertex("A");
-    // listGraph.addVertex("B");
-    // listGraph.addVertex("C");
-    // listGraph.addVertex("D");
+    // Add vertices
+    listGraph.addVertex("A");
+    listGraph.addVertex("B");
+    listGraph.addVertex("C");
+    listGraph.addVertex("D");
 
-    // // Add directed edges
-    // listGraph.addEdge(0, 1, 5.5);
-    // listGraph.addEdge(1, 2, -3);
-    // listGraph.addEdge(2, 3, 2);
-    // listGraph.addEdge(3, 0, 4.1);
+    // Add directed edges
+    listGraph.addEdge(0, 1, 5.5);
+    listGraph.addEdge(1, 2, -3);
+    listGraph.addEdge(2, 3, 2);
+    listGraph.addEdge(3, 0, 4.1);
 
-    // cout << "Before removing vertex 'B':" << endl;
-    // listGraph.printGraph();
+    cout << "Before removing vertex 'B':" << endl;
+    listGraph.printGraph();
 
-    // // Remove a vertex
-    // listGraph.removeVertex("B");
+    // Remove a vertex
+    listGraph.removeVertex("B");
 
-    // cout << "After removing vertex 'B':" << endl;
-    // listGraph.printGraph();
+    cout << "After removing vertex 'B':" << endl;
+    listGraph.printGraph();
+}
 
-    // std::cout << "=== Adjacency Matrix Graph (Directed, Unweighted) ===" << std::endl;
-    // AdjacencyMatrixGraph matrixGraph(true, false); // Directed, Unweighted Graph
-
-    // // Add vertices
-    // matrixGraph.addVertex("A");
-    // matrixGraph.addVertex("B");
-    // matrixGraph.addVertex("C");
-    // matrixGraph.addVertex("D");
-
-    // // Add directed edges (should default to weight 1.0)
-    // matrixGraph.addEdge(0, 1);
-    // matrixGraph.addEdge(1, 2);
-    // matrixGraph.addEdge(2, 3);
-    // matrixGraph.addEdge(3, 0);
-
-    // std::cout << "Before removing vertex 'B':" << std::endl;
-    // matrixGraph.printGraph();
-
-    // // Remove a vertex
-    // matrixGraph.removeVertex("B");
-
-    // std::cout << "After removing vertex 'B':" << std::endl;
-    // matrixGraph.printGraph();
-
-    // std::cout << "\n=== Adjacency List Graph (Directed, Unweighted) ===" << std::endl;
-    // AdjacencyListGraph listGraph(true, false); // Directed, Unweighted Graph
-
-    // // Add vertices
-    // listGraph.addVertex("A");
-    // listGraph.addVertex("B");
-    // listGraph.addVertex("C");
-    // listGraph.addVertex("D");
-
-    // // Add directed edges (should default to weight 1.0)
-    // listGraph.addEdge(0, 1);
-    // listGraph.addEdge(1, 2);
-    // listGraph.addEdge(2, 3);
-    // listGraph.addEdge(3, 0);
-
-    // std::cout << "Before removing vertex 'B':" << std::endl;
-    // listGraph.printGraph();
-
-    // // Remove a vertex
-    // listGraph.removeVertex("B");
-
-    // std::cout << "After removing vertex 'B':" << std::endl;
-    // listGraph.printGraph();
+void example_code_graphs_unweighted_undirected()
+{
 
     std::cout << "=== Adjacency Matrix Graph (Undirected, Unweighted) ===" << std::endl;
     AdjacencyMatrixGraph matrixGraph(false, false); // Undirected, Unweighted Graph
@@ -481,6 +440,65 @@ int main()
 
     std::cout << "After removing vertex 'B':" << std::endl;
     listGraph.printGraph();
+}
+
+void example_code_graphs_unweighted_directed()
+{
+    std::cout << "=== Adjacency Matrix Graph (Directed, Unweighted) ===" << std::endl;
+    AdjacencyMatrixGraph matrixGraph(true, false); // Directed, Unweighted Graph
+
+    // Add vertices
+    matrixGraph.addVertex("A");
+    matrixGraph.addVertex("B");
+    matrixGraph.addVertex("C");
+    matrixGraph.addVertex("D");
+
+    // Add directed edges (should default to weight 1.0)
+    matrixGraph.addEdge(0, 1);
+    matrixGraph.addEdge(1, 2);
+    matrixGraph.addEdge(2, 3);
+    matrixGraph.addEdge(3, 0);
+
+    std::cout << "Before removing vertex 'B':" << std::endl;
+    matrixGraph.printGraph();
+
+    // Remove a vertex
+    matrixGraph.removeVertex("B");
+
+    std::cout << "After removing vertex 'B':" << std::endl;
+    matrixGraph.printGraph();
+
+    std::cout << "\n=== Adjacency List Graph (Directed, Unweighted) ===" << std::endl;
+    AdjacencyListGraph listGraph(true, false); // Directed, Unweighted Graph
+
+    // Add vertices
+    listGraph.addVertex("A");
+    listGraph.addVertex("B");
+    listGraph.addVertex("C");
+    listGraph.addVertex("D");
+
+    // Add directed edges (should default to weight 1.0)
+    listGraph.addEdge(0, 1);
+    listGraph.addEdge(1, 2);
+    listGraph.addEdge(2, 3);
+    listGraph.addEdge(3, 0);
+
+    std::cout << "Before removing vertex 'B':" << std::endl;
+    listGraph.printGraph();
+
+    // Remove a vertex
+    listGraph.removeVertex("B");
+
+    std::cout << "After removing vertex 'B':" << std::endl;
+    listGraph.printGraph();
+}
+
+int main()
+{
+    example_code_graphs_weighted_undirected();
+    example_code_graphs_weighted_directed();
+    example_code_graphs_unweighted_directed();
+    example_code_graphs_unweighted_undirected();
 
     return 0;
 }
