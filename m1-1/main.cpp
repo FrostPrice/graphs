@@ -2,7 +2,7 @@
 #include <vector>
 #include <unordered_map>
 #include <list>
-#include <limits>
+#include <iomanip>
 
 using namespace std;
 
@@ -137,20 +137,20 @@ public:
 
     void printGraph() override
     {
-        // TODO: Fix the length of each column
         cout << "Adjacency Matrix:" << endl;
-        cout << "  ";
-        for (const auto &label : indexToLabel)
+        cout << "      "; // Extra space for row label
+        for (size_t i = 0; i < indexToLabel.size(); ++i)
         {
-            cout << label << " ";
+            cout << setw(8) << indexToLabel[i] + " [" + to_string(i) + "]";
         }
         cout << endl;
+
         for (size_t i = 0; i < matrix.size(); ++i)
         {
-            cout << indexToLabel[i] << " ";
+            cout << setw(8) << indexToLabel[i] + " [" + to_string(i) + "]";
             for (float val : matrix[i])
             {
-                cout << val << " ";
+                cout << setw(8) << val;
             }
             cout << endl;
         }
@@ -270,7 +270,7 @@ public:
             if (e.destination == destination)
                 return e.weight;
         }
-        return (weighted ? std::numeric_limits<float>::infinity() : 0);
+        return 0;
     }
 
     vector<int> getNeighbors(int vertex) override
@@ -288,10 +288,11 @@ public:
         cout << "Adjacency List:" << endl;
         for (int i = 0; i < adjacencyList.size(); i++)
         {
-            cout << indexToLabel[i] << " -> ";
+            cout << indexToLabel[i] << " [" << i << "]"
+                 << " -> ";
             for (const auto &e : adjacencyList[i])
             {
-                cout << "(" << indexToLabel[e.destination] << ", " << e.weight << ") ";
+                cout << "(" << indexToLabel[e.destination] << " [" << e.destination << "], " << e.weight << ") ";
             }
             cout << endl;
         }
