@@ -5,7 +5,7 @@
 
 void bfs(Graph &graph, const std::string &startLabel)
 {
-    std::cout << "\n[BFS] Visitando a partir de: " << startLabel << std::endl;
+    std::cout << "\n[BFS] Visiting from: " << startLabel << std::endl;
 
     int start = graph.getVertexIndex(startLabel);
     std::vector<bool> visited(graph.getVertexCount(), false);
@@ -46,7 +46,7 @@ void dfsUtil(Graph &graph, int v, std::vector<bool> &visited)
 
 void dfs(Graph &graph, const std::string &startLabel)
 {
-    std::cout << "\n[DFS] Visitando a partir de: " << startLabel << std::endl;
+    std::cout << "\n[DFS] Visiting from: " << startLabel << std::endl;
 
     int start = graph.getVertexIndex(startLabel);
     std::vector<bool> visited(graph.getVertexCount(), false);
@@ -58,7 +58,7 @@ void dijkstra(Graph &graph, const std::string &startLabel)
 {
     if (!graph.isWeighted())
     {
-        std::cout << "\n[Dijkstra] Aviso: O grafo não é ponderado.\n";
+        std::cout << "\n[Dijkstra] Warning: Graph is not weighted. Skipping Dijkstra.\n";
         return;
     }
 
@@ -89,17 +89,17 @@ void dijkstra(Graph &graph, const std::string &startLabel)
         }
     }
 
-    std::cout << "\n[Dijkstra] Menores distâncias a partir de " << startLabel << ":\n";
+    std::cout << "\n[Dijkstra] Shortest distances from " << startLabel << ":\n";
     for (int i = 0; i < V; ++i)
     {
-        std::cout << "Para " << graph.getVertexLabel(i) << " [" << i << "]: ";
+        std::cout << "To " << graph.getVertexLabel(i) << " [" << i << "]: ";
         if (dist[i] == std::numeric_limits<float>::infinity())
         {
-            std::cout << "inacessível\n";
+            std::cout << "unreachable\n";
             continue;
         }
 
-        std::cout << "Distância = " << dist[i] << ", Caminho = ";
+        std::cout << "Distance = " << dist[i] << ", Path = ";
 
         std::vector<int> path;
         for (int at = i; at != -1; at = prev[at])
