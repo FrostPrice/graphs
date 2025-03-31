@@ -1,0 +1,21 @@
+# === Build artifacts ===
+/build/
+/bin/
+/obj/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.dylib
+
+# === CMake ===
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# === VSCode ===
+.vscode/
