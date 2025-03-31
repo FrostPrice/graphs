@@ -8,7 +8,7 @@ Graph *loadGraphFromFile(const std::string &filename, RepresentationType reprTyp
     std::ifstream file(filename);
     if (!file.is_open())
     {
-        std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
+        std::cerr << "Error opening file: " << filename << std::endl;
         return nullptr;
     }
 
@@ -18,7 +18,7 @@ Graph *loadGraphFromFile(const std::string &filename, RepresentationType reprTyp
     std::stringstream ss(headerLine);
     if (!(ss >> V >> A >> D >> P))
     {
-        std::cerr << "Erro: cabeçalho inválido. Esperado: V A D P\n";
+        std::cerr << "Error: invalid header format. Expected: V A D P\n";
         return nullptr;
     }
 
@@ -31,27 +31,27 @@ Graph *loadGraphFromFile(const std::string &filename, RepresentationType reprTyp
     int edgeCount = 0;
     while (std::getline(file, line) && edgeCount < A)
     {
-        std::string origem, destino;
-        float peso = 1.0;
+        std::string source, destination;
+        float weight = 1.0;
 
         std::stringstream ss(line);
-        if (!(ss >> origem >> destino))
+        if (!(ss >> source >> destination))
         {
-            std::cerr << "Erro na linha de aresta: '" << line << "'\n";
+            std::cerr << "Error reading edge line: '" << line << "'\n";
             delete graph;
             return nullptr;
         }
 
-        if (P == 1 && !(ss >> peso))
+        if (P == 1 && !(ss >> weight))
         {
-            std::cerr << "Erro: peso da aresta esperado, mas ausente em: '" << line << "'\n";
+            std::cerr << "Error: edge weight expected but missing in line: '" << line << "'\n";
             delete graph;
             return nullptr;
         }
 
-        if (!graph->addEdge(graph->getVertexIndex(origem), graph->getVertexIndex(destino), peso))
+        if (!graph->addEdge(graph->getVertexIndex(source), graph->getVertexIndex(destination), weight))
         {
-            std::cerr << "Erro ao adicionar aresta: " << origem << " -> " << destino << std::endl;
+            std::cerr << "Error adding edge: " << source << " -> " << destination << std::endl;
             delete graph;
             return nullptr;
         }
@@ -60,7 +60,7 @@ Graph *loadGraphFromFile(const std::string &filename, RepresentationType reprTyp
     }
 
     if (edgeCount != A)
-        std::cerr << "Aviso: número de arestas lidas (" << edgeCount << ") difere do especificado (" << A << ")\n";
+        std::cerr << "Warning: number of edges read (" << edgeCount << ") differs from expected (" << A << ")\n";
 
     file.close();
     return graph;
