@@ -1,4 +1,4 @@
-#include "NavAlgorithms.hpp"
+#include "nav_algorithms.hpp"
 #include <iostream>
 #include <queue>
 #include <limits>

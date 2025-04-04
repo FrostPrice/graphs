@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graph.hpp"
+#include "graph.hpp"
 #include <string>
 
 void bfs(Graph &graph, const std::string &startLabel);

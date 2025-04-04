@@ -1,3 +1,3 @@
 #pragma once
-#include "Graph.hpp"
+#include "graph.hpp"
 Graph *loadGraphFromFile(const std::string &filename, RepresentationType reprType);

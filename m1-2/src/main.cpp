@@ -1,6 +1,6 @@
-#include "Graph.hpp"
-#include "Utils.hpp"
-#include "NavAlgorithms.hpp"
+#include "graph.hpp"
+#include "utils.hpp"
+#include "nav_algorithms.hpp"
 #include <iostream>
 
 int main(int argc, char *argv[])
