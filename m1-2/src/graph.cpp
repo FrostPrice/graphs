@@ -155,26 +155,32 @@ void Graph::printGraph()
     if (representation == RepresentationType::MATRIX)
     {
         std::cout << "Adjacency Matrix:\n      ";
+        std::cout << std::setw(4) << "|";
         for (size_t i = 0; i < indexToLabel.size(); ++i)
-            std::cout << std::setw(8) << indexToLabel[i] + " [" + std::to_string(i) + "]";
+            std::cout << std::setw(4) << indexToLabel[i] << std::setw(4) << "|";
         std::cout << std::endl;
+
+        std::cout << std::string(8, '-') << "-+-";
+        std::cout << std::string(8 * indexToLabel.size(), '-') << std::endl;
 
         for (size_t i = 0; i < matrix.size(); ++i)
         {
-            std::cout << std::setw(8) << indexToLabel[i] + " [" + std::to_string(i) + "]";
+            std::cout << std::setw(8) << indexToLabel[i];
+            std::cout << " |";
             for (float val : matrix[i])
-                std::cout << std::setw(8) << val;
+                std::cout << std::setw(4) << val << std::setw(4) << "|";
             std::cout << std::endl;
         }
     }
     else
     {
         std::cout << "Adjacency List:\n";
+        std::cout << "{Origin}({Destination}, {Weight})\n";
         for (size_t i = 0; i < adjacencyList.size(); i++)
         {
-            std::cout << indexToLabel[i] << " [" << i << "] -> ";
+            std::cout << indexToLabel[i];
             for (const auto &e : adjacencyList[i])
-                std::cout << "(" << indexToLabel[e.destination] << " [" << e.destination << "], " << e.weight << ") ";
+                std::cout << "(" << indexToLabel[e.destination] << ", " << e.weight << ") ";
             std::cout << std::endl;
         }
     }
