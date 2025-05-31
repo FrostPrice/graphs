@@ -6,23 +6,28 @@ This project implements a modular and efficient **graph coloring system** in C++
 
 ## 📂 Features
 
-- ✅ Graph coloring using multiple algorithms:
-  - **Brute-force** approach (exact)
-  - **Welsh-Powell** heuristic
-  - **DSATUR** heuristic
-  - **Simple greedy** heuristic
-- ✅ Dual representation support:
-  - Adjacency **list**
-  - Adjacency **matrix**
+### 🎨 Graph Coloring
+
+- ✅ **Brute-force** (exact)
+- ✅ **Welsh-Powell** heuristic
+- ✅ **DSATUR** heuristic
+- ✅ **Simple greedy** heuristic
+
+### 🔁 Maximum Flow
+
+- ✅ **Ford-Fulkerson** algorithm using DFS
+- ✅ **Local Search optimization** (inverting edge directions to maximize flow)
+
+### General
+
+- ✅ Dual graph representation: **Adjacency List** and **Matrix**
 - ✅ Graph input from structured text files
-- ✅ Output includes:
-  - Execution time for each algorithm
-  - Number of colors used
+- ✅ Outputs:
+  - Execution time
+  - Number of colors (coloring)
+  - Maximum flow values
   - Colored vertex list for small graphs (≤10 vertices)
-- ✅ Modular codebase split across logical components:
-  - Graph management
-  - Coloring algorithms
-  - Utilities and navigation
+- ✅ Modular codebase
 
 ---
 
@@ -32,7 +37,7 @@ Graph data is read from plain text files using the following structure:
 
 ```txt
 V A D P
-source destination
+source destination weight
 ...
 ```
 

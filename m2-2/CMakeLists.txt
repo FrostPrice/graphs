@@ -10,5 +10,6 @@ add_executable(GraphApp
     src/graph.cpp
     src/nav_algorithms.cpp
     src/coloring_algorithms.cpp
+    src/max_flow.cpp
     src/utils.cpp
 )

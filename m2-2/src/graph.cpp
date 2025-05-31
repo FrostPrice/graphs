@@ -122,7 +122,7 @@ bool Graph::edgeExists(int source, int destination)
     }
 }
 
-float Graph::edgeWeight(int source, int destination)
+float Graph::edgeWeight(int source, int destination) const
 {
     if (representation == RepresentationType::MATRIX)
         return matrix[source][destination];
@@ -207,4 +207,75 @@ string Graph::getVertexLabel(int index)
 bool Graph::isWeighted() const
 {
     return weighted;
+}
+
+Graph Graph::copy() const
+{
+    Graph new_graph(directed, weighted, representation);
+    for (const auto &label : indexToLabel)
+        new_graph.addVertex(label);
+
+    if (representation == RepresentationType::MATRIX)
+    {
+        new_graph.matrix = matrix;
+    }
+    else
+    {
+        new_graph.adjacencyList = adjacencyList;
+    }
+    return new_graph;
+}
+
+float Graph::getCapacity(int u, int v) const
+{
+    return edgeWeight(u, v);
+}
+
+void Graph::addFlow(int u, int v, float delta)
+{
+    if (representation == RepresentationType::MATRIX)
+    {
+        matrix[u][v] += delta;
+    }
+    else
+    {
+        for (auto &e : adjacencyList[u])
+        {
+            if (e.destination == v)
+            {
+                e.weight += delta;
+                return;
+            }
+        }
+        // Se não existir, cria uma nova
+        adjacencyList[u].push_back({v, delta});
+    }
+}
+
+vector<tuple<int, int, float>> Graph::getEdges() const
+{
+    vector<tuple<int, int, float>> edges;
+    if (representation == RepresentationType::MATRIX)
+    {
+        for (size_t u = 0; u < matrix.size(); ++u)
+        {
+            for (size_t v = 0; v < matrix[u].size(); ++v)
+            {
+                if (matrix[u][v] > 0)
+                    edges.emplace_back(u, v, matrix[u][v]);
+            }
+        }
+    }
+    else
+    {
+        for (size_t u = 0; u < adjacencyList.size(); ++u)
+        {
+            for (const auto &e : adjacencyList[u])
+            {
+                if (e.weight > 0)
+                    edges.emplace_back(u, e.destination, e.weight);
+            }
+        }
+    }
+    return edges;
 }
