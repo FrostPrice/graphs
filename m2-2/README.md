@@ -45,8 +45,8 @@ Where:
 
 - **V**: number of vertices
 - **A**: number of edges
-- **D**: 0 (only undirected supported)
-- **P**: 0 (only unweighted supported)
+- **D**: 0 or 1 (indicating undirected or directed graph)
+- **P**: 0 or 1 (indicating if the graph is unweighted or weighted)
 
 ### Example
 

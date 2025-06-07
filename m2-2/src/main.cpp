@@ -105,10 +105,10 @@ int main(int argc, char *argv[])
     cout << "\nINFO: Calculando Fluxo Máximo com Ford-Fulkerson" << endl;
 
     int source = 0;
-    int sink = g->getVertexCount() - 1;
+    int destination = g->getVertexCount() - 1;
 
     auto start = chrono::high_resolution_clock::now();
-    int maxFlow = fordFulkerson(*g, source, sink);
+    int maxFlow = fordFulkerson(*g, source, destination);
     auto end = chrono::high_resolution_clock::now();
     cout << "Ford-Fulkerson: Fluxo Máximo = " << maxFlow << endl;
     cout << "Tempo de execução: " << formatDuration(chrono::duration_cast<chrono::nanoseconds>(end - start).count()) << endl;
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     // --- Busca Local ---
     cout << "\nINFO: Otimizando com Busca Local" << endl;
     start = chrono::high_resolution_clock::now();
-    int improvedFlow = localSearch(*g, source, sink, 1000);
+    int improvedFlow = localSearch(*g, source, destination, 1000);
     end = chrono::high_resolution_clock::now();
     cout << "Busca Local: Fluxo Máximo Otimizado = " << improvedFlow << endl;
     cout << "Tempo de execução: " << formatDuration(chrono::duration_cast<chrono::nanoseconds>(end - start).count()) << endl;
