@@ -81,7 +81,10 @@ int localSearch(Graph &graph, int source, int destination, int iterations)
     // Generate random number based on a seed
     mt19937 rng(random_device{}());
 
+    int steps = 0;
     int improvements = 0;
+    int no_improvement_count = 0;
+    int stagnation_limit = 1000;
 
     for (int i = 0; i < iterations; ++i)
     {
@@ -97,18 +100,30 @@ int localSearch(Graph &graph, int source, int destination, int iterations)
         neighbor.addEdge(v, u, c); // Invert the edge direction
 
         int new_flow = fordFulkerson(neighbor, source, destination);
+        steps++; // Increment the step count
 
         if (new_flow > best_flow)
         {
             best_flow = new_flow;
             best_graph = neighbor;
-            improvements++; // Count the improvement
+            improvements++;           // Count the improvement
+            no_improvement_count = 0; // Reset stagnation counter
+        }
+        else
+        {
+            no_improvement_count++;
+            if (no_improvement_count >= stagnation_limit)
+            {
+                cout << "Early stop: no improvements found after " << stagnation_limit << " tries." << endl;
+                break;
+            }
         }
     }
 
     cout << "Maximum flow of the original solution: " << original_flow << endl;
     cout << "Maximum flow of the final solution: " << best_flow << endl;
-    cout << "Number of steps used: " << iterations << endl;
+    cout << "Number of steps: " << (steps - no_improvement_count) << endl;
+    cout << "Number of steps (with stagnation): " << steps << endl;
     cout << "Improvements found: " << improvements << endl;
 
     return best_flow;

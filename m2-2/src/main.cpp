@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     // --- Busca Local ---
     cout << "\nINFO: Otimizando com Busca Local" << endl;
     start = chrono::high_resolution_clock::now();
-    int improvedFlow = localSearch(*g, source, destination, 1000);
+    int improvedFlow = localSearch(*g, source, destination, 10000);
     end = chrono::high_resolution_clock::now();
     cout << "Busca Local: Fluxo Máximo Otimizado = " << improvedFlow << endl;
     cout << "Tempo de execução: " << formatDuration(chrono::duration_cast<chrono::nanoseconds>(end - start).count()) << endl;
